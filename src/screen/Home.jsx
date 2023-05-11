@@ -27,9 +27,13 @@ const Home = () => {
         setData(prev => {
             let newData = prev.map((data) => {
                 if (data.id === id) {
-                    return {
-                        ...data,
-                        like: data.like - 1
+                    if (data.like !== 0) {
+                        return {
+                            ...data,
+                            like: data.like - 1
+                        }
+                    } else {
+                        return data
                     }
                 } else {
                     return data
@@ -62,9 +66,13 @@ const Home = () => {
 
     const handleDislikeAll = () => {
         const newData = data.map((data) => {
-            return {
-                ...data,
-                like: data.like - 1
+            if (data.like !== 0) {
+                return {
+                    ...data,
+                    like: data.like - 1
+                }
+            } else {
+                return data
             }
         })
         setData(newData)
